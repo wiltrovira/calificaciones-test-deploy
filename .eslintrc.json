@@ -5,6 +5,7 @@
         "node":true
     },
     "extends": "eslint:recommended",
+    "parser": "babel-eslint",
     "rules": {
         "no-console":"warn",
         "indent": [
@@ -13,7 +14,7 @@
         ],
         "linebreak-style": [
             "error",
-            "windows"
+            "unix"
         ],
         "quotes": [
             "error",

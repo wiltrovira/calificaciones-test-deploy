@@ -8,13 +8,14 @@
     "test": "test"
   },
   "scripts": {
+    "src": "node index.js",
     "prestart": "npm-run-all --parallel security-check test eslint",
-    "start": "npm-run-all --parallel localtunnel src",
+    "start": "npm-run-all --parallel localtunnel test-watch src ",
     "localtunnel": "lt --port 3000",
     "security-check": "nsp check",
-    "test": "nodeunit",
-    "eslint": "eslint --fix .",
-    "src": "node index.js"
+    "test": "mocha --reporter progress src/testSetup.js \"src/**/*.test.js\" \"lib/**/*.test.js\"",
+    "test-watch": "npm run test -- --watch",
+    "eslint": "eslint src"
   },
   "pre-commit": [
     "test",
@@ -22,21 +23,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wiltrovira/nsp-nodesecurity-calificaciones-201.git"
+    "url": "git+https://github.com/wiltrovira/calificaciones-test-deploy.git"
   },
   "keywords": [
     "nodejs",
     "express",
-    "calificaciones",
-    "array",
-    "objeto",
-    "promedio",
-    "funciones",
     "localtunnel",
     "nsp",
     "node security",
     "eslint",
-    "travisci",
+    "travis ci",
+    "mocha",
+    "babel",
     "heroku",
     "sentry"
   ],
@@ -51,12 +49,20 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.1",
     "eslint": "^4.5.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-rules-nodejs": "^1.0.0",
+    "jsdom": "^11.2.0",
     "localtunnel": "^1.8.3",
     "mocha": "^3.5.0",
-    "nodeunit": "^0.11.1",
-    "npm-run-all": "^4.0.2",
+    "npm-run-all": "^4.1.0",
     "nsp": "^2.7.0",
+    "phantomjs-prebuilt": "^2.1.15",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }
