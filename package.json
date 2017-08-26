@@ -1,27 +1,63 @@
 {
-  "name": "unit-test-101",
+  "name": "calificaciones-test-deploy",
   "version": "0.1.0",
-  "description": "unit test básico",
+  "description": "Promedio de calificaciones. Usa express, localtunnel, nsp, eslint, npm-rull-all, sentry, mocha, travisci, heroku.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   },
+  "scripts": {
+    "prestart": "npm-run-all --parallel security-check test eslint",
+    "start": "npm-run-all --parallel localtunnel src",
+    "localtunnel": "lt --port 3000",
+    "security-check": "nsp check",
+    "test": "nodeunit",
+    "eslint": "eslint --fix .",
+    "src": "node index.js"
+  },
+  "pre-commit": [
+    "test",
+    "eslint"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wiltrovira/unit-test-101.git"
+    "url": "git+https://github.com/wiltrovira/nsp-nodesecurity-calificaciones-201.git"
   },
   "keywords": [
-    "unit",
-    "test"
+    "nodejs",
+    "express",
+    "calificaciones",
+    "array",
+    "objeto",
+    "promedio",
+    "funciones",
+    "localtunnel",
+    "nsp",
+    "node security",
+    "eslint",
+    "travisci",
+    "heroku",
+    "sentry"
   ],
   "author": "Wilt Rovira",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wiltrovira/unit-test-101/issues"
+    "url": "https://github.com/wiltrovira/calificaciones-test-deploy/issues"
   },
-  "homepage": "https://github.com/wiltrovira/unit-test-101#readme",
+  "homepage": "https://github.com/wiltrovira/calificaciones-test-deploy#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
   "devDependencies": {
-    "jasmine": "^2.8.0",
-    "mocha": "^3.5.0"
+    "babel-cli": "^6.26.0",
+    "eslint": "^4.5.0",
+    "localtunnel": "^1.8.3",
+    "mocha": "^3.5.0",
+    "nodeunit": "^0.11.1",
+    "npm-run-all": "^4.0.2",
+    "nsp": "^2.7.0",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
   }
 }
