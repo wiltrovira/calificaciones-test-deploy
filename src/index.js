@@ -1,12 +1,14 @@
 "use strict";
-var libro = require("../lib/calificaciones").libroDeCalificaciones;
-var express = require("express");
+import {libroDeCalificaciones} from "../lib/calificaciones";
+import express from "express";
 
 //console.log(express);
 
 var app = express();
+var libro = libroDeCalificaciones;
+
 app.get("/", function(request, response){
-	response.send("Hola, mundo. Para calcular promedio escribe http://localhost:3000/notafinal?notas=90,80,70,60,50");
+	response.send("Hola, mundo!. Para calcular promedio escribe /notafinal?notas=90,80,70,60,50");
 });
 
 app.get("/notafinal", function(request, response){
